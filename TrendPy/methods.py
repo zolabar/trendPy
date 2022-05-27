@@ -1,3 +1,4 @@
+import numpy as np
 
 def linreg(x,y):
     check(x,y)
@@ -16,6 +17,11 @@ def linreg(x,y):
     yIntercept = (1/len(x)) * (partC - slope * partB)
     #returning results
     return slope,yIntercept
+
+def linReg(x,y):
+    a = (np.inner(x,y) - (len(x) * np.mean(x) * np.mean(y))) / (np.inner(x,x) - (len(x) * ((np.mean(x))**2)))
+    b = np.mean(y) - a * np.mean(x)
+    return a,b
 
 def check(x,y):
     # checking input variables (exceptions)

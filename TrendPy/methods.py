@@ -6,6 +6,11 @@ def linReg(x,y):
     return [a,b]
 
 
+def r2(y, y_pred):
+        wert = 1-np.sum((y-y_pred)**2)/np.sum((y-np.mean(y))**2)
+        return wert
+
+
 def linreg(x,y):
     check(x,y)
     #initialising calculating variables

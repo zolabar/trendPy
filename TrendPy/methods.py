@@ -1,12 +1,26 @@
 import numpy as np
 
 def linReg(x,y):
+    '''Time series linear regression. Returns coefs in polynomial descending order.
+       Coefs computed analytically.
+    '''
+    
     a = (np.inner(x,y) - (len(x) * np.mean(x) * np.mean(y))) / (np.inner(x,x) - (len(x) * ((np.mean(x))**2)))
     b = np.mean(y) - a * np.mean(x)
     return [a,b]
 
+def polReg(x,y,deg):
+    '''Time series polynomial regression. Returns coefs in polynomial descending order.
+       Coefs computed numerically.
+    '''
+    
+    coefs = np.polyfit(x, y, deg)
+    return coefs
+
 
 def r2(y, y_pred):
+        '''Coefficient of determination
+        '''
         wert = 1-np.sum((y-y_pred)**2)/np.sum((y-np.mean(y))**2)
         return wert
 

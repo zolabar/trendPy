@@ -3,7 +3,7 @@
 from . import methods as mt
 import numpy as np
 
-class Trends:
+class Trend:
     """ Trends Class
     
     """    

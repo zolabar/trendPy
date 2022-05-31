@@ -1,6 +1,7 @@
 voila
 jupyter
 numpy
+scipy
 matplotlib
 pandas
 plotly

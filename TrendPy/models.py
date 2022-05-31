@@ -14,6 +14,9 @@ class Trend:
                        ansatz,
                        deg = None,
                        ):
+        '''Initialization of Trend with training input, training output,
+           ansatz (string) and deg (if polynomial ansatz)
+        '''
         self.x = x
         self.y = y
         self.ansatz = ansatz
@@ -23,6 +26,8 @@ class Trend:
         
     
     def coef(self):
+        '''Computes coefficients of corresponding ansatz
+        '''
     
         if self.ansatz == 'linReg':
             
@@ -36,12 +41,16 @@ class Trend:
     
     
     def pred(self, x):
-        
+        '''Computes the predction for input x and the computed corresponing
+           coefficients
+        ''' 
         values = np.poly1d(self.coef)(x)     
         
     
         return  values      
     
     def r2(self):
+        '''Computes the coefficient of determination for the training input
+        ''' 
         wert=mt.r2(self.y, self.pred(self.x))
         return round(wert, 3)    

@@ -9,7 +9,7 @@ def linReg(x,y):
     b = np.mean(y) - a * np.mean(x)
     return [a,b]
 
-def polReg(x,y,deg):
+def polReg(x,y, deg):
     '''Time series polynomial regression. Returns coefs in polynomial descending order.
        Coefs computed numerically.
     '''

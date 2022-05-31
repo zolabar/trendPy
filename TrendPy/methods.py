@@ -18,7 +18,7 @@ def polReg(x,y, deg):
     return coefs
 
 
-def sineReg(x, y):
+def trigReg(x, y):
     '''Time seriessine regression. Returns amplitude, frequency and phase
     '''    
     timestep = x[1]-x[0]

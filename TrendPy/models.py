@@ -37,22 +37,22 @@ class Trend:
             
             coef = mt.polReg(self.x, self.y, deg = self.deg) 
             
-        if self.ansatz == 'sineReg':
+        if self.ansatz == 'trigReg':
             
-            coef = mt.sineReg(self.x, self.y)
+            coef = mt.trigReg(self.x, self.y)
     
         return coef
     
     
     def pred(self, x):
-        '''Computes the predction for input x and the computed corresponing
+        '''Computes the predction for input x and the computed corresponding
            coefficients
         ''' 
         
         if self.ansatz == 'linReg' or self.ansatz == 'polReg':
             values = np.poly1d(self.coef)(x)     
             
-        if self.ansatz == 'sineReg':
+        if self.ansatz == 'trigReg':
             amplitude, frequenz, angle = self.coef
             values = amplitude*np.cos(2*np.pi*frequenz*x+angle)              
         

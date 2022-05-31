@@ -18,6 +18,24 @@ def polReg(x,y, deg):
     return coefs
 
 
+def sineReg(x, y):
+    '''Time seriessine regression. Returns amplitude, frequency and phase
+    '''    
+    timestep = x[1]-x[0]
+    X = np.fft.fftfreq(len(x), timestep)
+    Y = np.fft.fft(y)
+
+    index = np.argmax(abs(Y))
+    
+    amplitude = 2*np.absolute(Y[index])/len(x)
+    frequenz = abs(X[index])
+    angle = np.angle(Y[index])    
+    
+    coefs = np.array([amplitude, frequenz, angle])
+    
+    return coefs
+
+
 def r2(y, y_pred):
         '''Coefficient of determination
         '''

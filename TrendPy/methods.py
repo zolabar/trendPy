@@ -35,6 +35,19 @@ def trigReg(x, y):
     
     return coefs
 
+def pred(ansatz, coef, x):
+    '''Computes the predction for input x and the computed corresponding
+       coefficients
+    ''' 
+        
+    if ansatz == 'linReg' or ansatz == 'polReg':
+        values = np.poly1d(coef)(x)     
+            
+    if ansatz == 'trigReg':
+        amplitude, frequenz, angle = coef
+        values = amplitude*np.cos(2*np.pi*frequenz*x+angle)              
+        
+    return  values 
 
 def r2(y, y_pred):
         '''Coefficient of determination

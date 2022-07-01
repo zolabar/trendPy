@@ -35,6 +35,14 @@ def trigReg(x, y):
     
     return coefs
 
+def expReg(x,y):
+    '''Time series exponential regression. 
+    '''
+    coef_first_step = linReg(x,np.log(y))
+    b = coef_first_step[0]
+    a = np.exp(coef_first_step[1])
+    return [a,b]
+
 def pred(ansatz, coef, x):
     '''Computes the predction for input x and the computed corresponding
        coefficients
@@ -45,7 +53,10 @@ def pred(ansatz, coef, x):
             
     if ansatz == 'trigReg':
         amplitude, frequenz, angle = coef
-        values = amplitude*np.cos(2*np.pi*frequenz*x+angle)              
+        values = amplitude*np.cos(2*np.pi*frequenz*x+angle)  
+        
+    if ansatz == 'expReg':
+        values = coef[0]*np.exp(coef[1]*x) 
         
     return  values 
 

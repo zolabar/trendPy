@@ -40,6 +40,10 @@ class Trend:
         if self.ansatz == 'trigReg':
             
             coef = mt.trigReg(self.x, self.y)
+            
+        if self.ansatz == 'expReg':
+            
+            coef = mt.expReg(self.x, self.y)            
     
         return coef
     
@@ -49,12 +53,7 @@ class Trend:
            coefficients
         ''' 
         
-        if self.ansatz == 'linReg' or self.ansatz == 'polReg':
-            values = np.poly1d(self.coef)(x)     
-            
-        if self.ansatz == 'trigReg':
-            amplitude, frequenz, angle = self.coef
-            values = amplitude*np.cos(2*np.pi*frequenz*x+angle)              
+        values = mt.pred(self.ansatz, self.coef, x)            
         
     
         return  values      

@@ -6,5 +6,5 @@ Voila Web App: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder
 
 Use the package **TrendPy** as shown in the ```example.ipynb``` to use linear, polynomial, exponential or trigonometric regressions or use the **WebApp** with the correspondig button above.
 
-<img src="figures/screenshot.PNG"  />
+<img src="figures/screenshot2.PNG"  />
 

@@ -1,5 +1,5 @@
 numpy
 plotly
-ipywdigets
+ipywidgets
 sphinxcontrib.images
 sphinx-panels

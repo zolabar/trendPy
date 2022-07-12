@@ -52,7 +52,7 @@ The full trendPy github repository can be found `here <https://github.com/zolaba
 
    getting_started
    trendPyPackage
-   gallery
+   
 
 
 

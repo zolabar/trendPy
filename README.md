@@ -8,5 +8,7 @@ Heroku Web App: [![example badge](figures/succeeded.svg)](https://trendpy.heroku
 
 Use the package **TrendPy** as shown in the ```example.ipynb``` to use linear, polynomial, exponential or trigonometric regressions or use the **WebApp** with the correspondig button above.
 
+For more, have look at the [sphinx-documentation](https://zolabar.github.io/trendPy/)!
+
 <img src="figures/screenshot2.PNG"  />
 

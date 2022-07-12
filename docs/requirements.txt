@@ -1,0 +1,5 @@
+numpy
+plotly
+ipywdigets
+sphinxcontrib.images
+sphinx-panels

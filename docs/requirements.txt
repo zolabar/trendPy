@@ -1,5 +1,0 @@
-numpy
-plotly
-ipywidgets
-sphinxcontrib.images
-sphinx-panels

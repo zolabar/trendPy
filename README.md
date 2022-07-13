@@ -6,7 +6,7 @@ Voila Web App: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder
 
 Heroku Web App: [![example badge](figures/succeeded.svg)](https://trendpy.herokuapp.com/)
 
-Use the package **TrendPy** as shown in the ```example.ipynb``` to use linear, polynomial, exponential or trigonometric regressions or use the **WebApp** with the correspondig button above.
+Use the package **TrendPy** as shown in the ```example.ipynb``` to use linear, polynomial, exponential or trigonometric regressions in your Python scripts or jupyter notebooks or use the **WebApp** with the correspondig button above.
 
 For more, have a look at the [sphinx-documentation](https://zolabar.github.io/trendPy/)!
 

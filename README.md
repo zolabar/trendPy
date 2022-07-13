@@ -1,10 +1,10 @@
 <img src="figures/logo.jpg"  height="300"  />
 
-Jupyter Lab:   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD)
+Jupyter Lab:   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD) Documentation: [![doc](https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg)](https://zolabar.github.io/trendPy/) WebApps: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD?urlpath=voila%2Frender%2F/trendpy_webapp.ipynb) (binder) [![example badge](figures/succeeded.svg)](https://trendpy.herokuapp.com/) (Heroku)
 
-Voila Web App: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD?urlpath=voila%2Frender%2F/trendpy_webapp.ipynb)
 
-Heroku Web App: [![example badge](figures/succeeded.svg)](https://trendpy.herokuapp.com/)
+
+
 
 Use the package **TrendPy** as shown in the ```example.ipynb``` to use linear, polynomial, exponential or trigonometric regressions in your Python scripts or jupyter notebooks or use the **WebApp** with the correspondig button above.
 

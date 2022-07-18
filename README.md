@@ -6,7 +6,15 @@ Jupyter Lab:   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder
 
 
 
-Use the package **TrendPy** as shown in the ```example.ipynb``` to use linear, polynomial, exponential or trigonometric regressions in your Python scripts or jupyter notebooks or use the **WebApp** with the correspondig button above.
+Use the package **TrendPy** as shown in the ```example.ipynb``` to use 
+
+* linear 
+* polynomial
+* exponential 
+* trigonometric 
+* "free" (with three parameters) (e.g.```a*arctan(b*x+c)```, ```a*exp(b*x+c)```, ```a*(x*b)+c```)
+
+regressions in your Python scripts or jupyter notebooks or use the **WebApp** with the correspondig button above.
 
 For more, have a look at the [**sphinx-documentation**](https://zolabar.github.io/trendPy/)!
 

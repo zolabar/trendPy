@@ -7,3 +7,4 @@ pandas
 plotly
 seaborn
 scikit-learn
+sympy

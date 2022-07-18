@@ -13,6 +13,7 @@ class Trend:
                        y,
                        ansatz,
                        deg = None,
+                       freeRegAnsatz=None,
                        ):
         '''Initialization of Trend with training input, training output,
            ansatz (string) and deg (if polynomial ansatz)
@@ -21,6 +22,7 @@ class Trend:
         self.y = y
         self.ansatz = ansatz
         self.deg = deg
+        self.freeRegAnsatz = freeRegAnsatz
         self.coef = self.coef()
         self.r2 = self.r2()
         
@@ -43,7 +45,11 @@ class Trend:
             
         if self.ansatz == 'expReg':
             
-            coef = mt.expReg(self.x, self.y)            
+            coef = mt.expReg(self.x, self.y)  
+            
+        if self.ansatz == 'freeReg':
+            
+            coef = mt.freeReg(self.x, self.y, self.freeRegAnsatz)             
     
         return coef
     
@@ -53,7 +59,7 @@ class Trend:
            coefficients
         ''' 
         
-        values = mt.pred(self.ansatz, self.coef, x)            
+        values = mt.pred(self.ansatz, self.coef, x, freeRegAnsatz=self.freeRegAnsatz)            
         
     
         return  values      

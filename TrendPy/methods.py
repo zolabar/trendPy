@@ -1,62 +1,85 @@
 import numpy as np
+from scipy.optimize import least_squares, minimize, curve_fit
+import sympy as sym
+from sympy import atan as arctan
+from sympy import sqrt, sin, cos, tan, exp, log, ln
+a, b, c, x = sym.symbols('a, b, c, x', real=True)
 
-def linReg(x,y):
+def linReg(x_in,y):
     '''Time series linear regression. Returns coefs in polynomial descending order.
        Coefs computed analytically.
     '''
     
-    a = (np.inner(x,y) - (len(x) * np.mean(x) * np.mean(y))) / (np.inner(x,x) - (len(x) * ((np.mean(x))**2)))
-    b = np.mean(y) - a * np.mean(x)
+    a = (np.inner(x_in,y) - (len(x_in) * np.mean(x_in) * np.mean(y))) / (np.inner(x_in,x_in) - (len(x_in) * ((np.mean(x_in))**2)))
+    b = np.mean(y) - a * np.mean(x_in)
     return [a,b]
 
-def polReg(x,y, deg):
+def polReg(x_in,y, deg):
     '''Time series polynomial regression. Returns coefs in polynomial descending order.
        Coefs computed numerically.
     '''
     
-    coefs = np.polyfit(x, y, deg)
+    coefs = np.polyfit(x_in, y, deg)
     return coefs
 
+def freeReg(x_in, y_out, ansatz):
+    '''Regression with user ansatz. The ansatz is expected to depend on three
+       parameters, a, b, and c. The ansatz is expected to be a string with a 
+       symbolic formulation. for instance: 'a*arctan(b*x_in+c)'.
+    '''    
+    test_func = sym.lambdify((x, a, b, c), eval(ansatz))
+    
+    res = curve_fit(test_func, x_in, y_out)
 
-def trigReg(x, y):
+    return res[0]    
+
+
+def trigReg(x_in, y):
     '''Time seriessine regression. Returns amplitude, frequency and phase
     '''    
-    timestep = x[1]-x[0]
-    X = np.fft.fftfreq(len(x), timestep)
+    timestep = x_in[1]-x_in[0]
+    x_in = np.fft.fftfreq(len(x_in), timestep)
     Y = np.fft.fft(y)
 
     index = np.argmax(abs(Y))
     
-    amplitude = 2*np.absolute(Y[index])/len(x)
-    frequenz = abs(X[index])
+    amplitude = 2*np.absolute(Y[index])/len(x_in)
+    frequenz = abs(x_in[index])
     angle = np.angle(Y[index])    
     
     coefs = np.array([amplitude, frequenz, angle])
     
     return coefs
 
-def expReg(x,y):
+def expReg(x_in,y):
     '''Time series exponential regression. 
     '''
-    coef_first_step = linReg(x,np.log(y))
+    coef_first_step = linReg(x_in,np.log(y))
     b = coef_first_step[0]
     a = np.exp(coef_first_step[1])
     return [a,b]
 
-def pred(ansatz, coef, x):
-    '''Computes the predction for input x and the computed corresponding
+def pred(ansatz, coef, x_in, freeRegAnsatz=None):
+    '''Computes the predction for input x_in and the computed corresponding
        coefficients
     ''' 
         
     if ansatz == 'linReg' or ansatz == 'polReg':
-        values = np.poly1d(coef)(x)     
+        values = np.poly1d(coef)(x_in)     
             
     if ansatz == 'trigReg':
         amplitude, frequenz, angle = coef
-        values = amplitude*np.cos(2*np.pi*frequenz*x+angle)  
+        values = amplitude*np.cos(2*np.pi*frequenz*x_in+angle)  
         
     if ansatz == 'expReg':
-        values = coef[0]*np.exp(coef[1]*x) 
+        values = coef[0]*np.exp(coef[1]*x_in) 
+        
+    if ansatz == 'freeReg':
+        #print(eval(freeRegAnsatz))
+        f = eval(freeRegAnsatz).subs(a, coef[0]).subs(b, coef[1]).subs(c, coef[2])
+        f_num = sym.lambdify(x, f)       
+        values = f_num(x_in)
+        
         
     return  values 
 
@@ -67,32 +90,3 @@ def r2(y, y_pred):
         return wert
 
 
-def linreg(x,y):
-    check(x,y)
-    #initialising calculating variables
-    partA = partB = partC = partD = partE = slope = yIntercept = 0.0
-    #calculating linear regression
-    for i in range(len(x)):
-        #splitting and calculating the parts of the formula (linear regression)
-        partA += x[i] * y[i]
-        partB += x[i]
-        partC += y[i]
-        partD += (x[i])**2
-        partE += x[i]
-    #merging the parts into the final constants
-    slope = ((len(x) * partA) - (partB * partC)) / ((len(x) * partD) - (partE ** 2))
-    yIntercept = (1/len(x)) * (partC - slope * partB)
-    #returning results
-    return slope,yIntercept
-
-
-def check(x,y):
-    # checking input variables (exceptions)
-    if type(x) != list:
-        raise TypeError(f"First Argument has the wrong type: {type(x)}. Please provide a list.")
-    if type(y) != list:
-        raise TypeError(f"Second Argument has the wrong type: {type(y)}. Please provide a list.")
-    if len(x) < 2 or len(y) < 2:
-        raise ValueError(f"You provided not enough data. Please provide more data in order to use the function.")
-    if len(x) != len(y):
-        raise TypeError(f"The lists don't have the same length. In order to use this function the lists have to be the same length.")

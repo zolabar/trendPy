@@ -13,6 +13,11 @@ from traitlets import traitlets
 import TrendPy.methods as tm
 import numpy as np
 import warnings
+import sympy as sym
+from sympy import atan as arctan
+from sympy import sqrt, sin, cos, tan, exp, log, ln
+a, b, c, x = sym.symbols('a, b, c, x', real=True)
+
 warnings.filterwarnings('ignore')
 
 version = 'v1.0.1'
@@ -308,7 +313,7 @@ class App():
                 print('coefficients: ', coefs)
                 y_pred = tm.pred('freeReg', coefs, x_values, freeRegAnsatz=expression)
                 self.fig_widget.update_traces(x=sorted_df[values_in], y=y_pred, selector=({'name':'trendline'}))
-                self.fig_widget.update_layout(title_text=r"$f(x)=c_0\cdot e^{c_1\cdot x}$")
+                self.fig_widget.update_layout(title_text=r"$f(x)=%s$" % sym.latex(eval(expression)))
                 if r2==True:
                     r2_score = tm.r2(y_values, y_pred)
                     print('R2-score:     ', r2_score)

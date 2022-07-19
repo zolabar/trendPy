@@ -15,7 +15,7 @@ import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
-version = 'v1.0.0'
+version = 'v1.0.1'
 
 class LoadedButton(widgets.Button):
 
@@ -73,7 +73,12 @@ class App():
             )
         
         self.trend_dropdown = widgets.Dropdown(
-            options=['No trendline','linear','polynomial','trigonometric','exponential'],
+            options=['No trendline',
+                     'linear',
+                     'polynomial',
+                     'trigonometric',
+                     'exponential',
+                     'manual'],
             value='No trendline',
             description='trendline:',
             disabled=False,
@@ -86,6 +91,13 @@ class App():
             disabled=True,
             )
         
+        self.freeReg_ansatz_input = widgets.Text(
+            value=' ',
+            description='expression',
+            disabled=True,
+            )        
+        
+        
         self.r2_checkbox = widgets.Checkbox(
             value=False,
             description='Show R2 score',
@@ -95,7 +107,7 @@ class App():
         
         # arrangement of dropdown menus
         dropdown_elements = widgets.HBox([self.input_dropdown, self.output_dropdown], layout=self.box_layout)
-        trend_selection = widgets.HBox([self.trend_dropdown, self.polynomial_deg_selection], layout=self.box_layout)
+        trend_selection = widgets.HBox([self.trend_dropdown, self.polynomial_deg_selection, self.freeReg_ansatz_input], layout=self.box_layout)
         r2_container = widgets.HBox([self.r2_checkbox],layout=self.box_layout)
         
         
@@ -104,6 +116,7 @@ class App():
                                                                  'values_out': self.output_dropdown, 
                                                                  'trend': self.trend_dropdown, 
                                                                  'deg': self.polynomial_deg_selection, 
+                                                                 'expression': self.freeReg_ansatz_input, 
                                                                  'r2': self.r2_checkbox})
         
         self.out = widgets.Output()
@@ -159,6 +172,7 @@ class App():
         self.fig_widget.update_traces(x=[],y=[],selector=({'name':'trendline'}))
         self.trend_dropdown.value='No trendline'
         self.polynomial_deg_selection.disabled=True
+        self.freeReg_ansatz_input.disabled = True
         self.r2_checkbox.value=False
         self.r2_checkbox.disabled=True
             
@@ -194,11 +208,16 @@ class App():
                 
         return
     
-        def create_graphics(self, values_in,values_out,trend,deg=2,r2=False):
+    def create_graphics(self, values_in,values_out,trend,deg=2, expression='x', r2=False):
             if trend == 'polynomial':
                 self.polynomial_deg_selection.disabled=False
             else:
                 self.polynomial_deg_selection.disabled=True
+                
+            if trend == 'manual':
+                self.freeReg_ansatz_input.disabled=False 
+            else:
+                self.freeReg_ansatz_input.disabled=True
                 
             if values_in == '' or values_out=='':
                 print("Please select your X and Y values in the dropdown menus above.")
@@ -217,7 +236,7 @@ class App():
                         with self.out2:
                             clear_output()
                         self.r2_checkbox.disabled=False
-                        self.calculate_trendline(values_in, values_out, trend, deg, r2) # function that calculates and draws trendline is called
+                        self.calculate_trendline(values_in, values_out, trend, deg, expression, r2) # function that calculates and draws trendline is called
                     else:
                         self.fig_widget.update_traces(x=[],y=[],selector=({'name':'trendline'}))
                         self.r2_checkbox.disabled=True
@@ -227,7 +246,7 @@ class App():
                 return
             
             
-    def calculate_trendline(self, values_in, values_out, trend, deg, r2):
+    def calculate_trendline(self, values_in, values_out, trend, deg, expression, r2):
         sorted_df = self.button.value.sort_values(by=values_in) # without sorting trendlines can not be plotted correctly
         x_values=sorted_df[values_in].to_numpy()
         y_values=sorted_df[values_out].to_numpy()
@@ -282,40 +301,23 @@ class App():
                     print('R2-score:     ', r2_score)
             except:
                 print('Selected regression might not be a good fit for the entered values! Please choose other regression!')
+
+        elif trend=='manual':
+            try:
+                coefs = tm.freeReg(x_values,y_values, expression)
+                print('coefficients: ', coefs)
+                y_pred = tm.pred('freeReg', coefs, x_values, freeRegAnsatz=expression)
+                self.fig_widget.update_traces(x=sorted_df[values_in], y=y_pred, selector=({'name':'trendline'}))
+                self.fig_widget.update_layout(title_text=r"$f(x)=c_0\cdot e^{c_1\cdot x}$")
+                if r2==True:
+                    r2_score = tm.r2(y_values, y_pred)
+                    print('R2-score:     ', r2_score)
+            except:
+                print('Selected regression might not be a good fit for the entered values! Please choose other regression!')
         
         return  
     
-    def create_graphics(self, values_in,values_out,trend,deg=2,r2=False):
-        if trend == 'polynomial':
-            self.polynomial_deg_selection.disabled=False
-        else:
-            self.polynomial_deg_selection.disabled=True
-            
-        if values_in == '' or values_out=='':
-            print("Please select your X and Y values in the dropdown menus above.")
-        else:
-            try: # sometimes an error is occuring when user hasn't changed the standard dropdown X and Y values yet
-                 # through try/except the user does not see the error and won't notice it, because standard values are
-                 # usually not going to be used
-                
-                # updateing the plot based on the input data
-                self.fig_widget.layout.xaxis.title = values_in
-                self.fig_widget.layout.yaxis.title = values_out
-                self.fig_widget.update_traces(x=self.button.value[values_in], 
-                                              y=self.button.value[values_out], 
-                                              selector=({'name':'datapoints'}))
-                if trend!="No trendline":
-                    with self.out2:
-                        clear_output()
-                    self.r2_checkbox.disabled=False
-                    self.calculate_trendline(values_in, values_out, trend, deg, r2) # function that calculates and draws trendline is called
-                else:
-                    self.fig_widget.update_traces(x=[],y=[],selector=({'name':'trendline'}))
-                    self.r2_checkbox.disabled=True
-            except:
-                pass
-            
-        return
+
             
     
     def show(self):

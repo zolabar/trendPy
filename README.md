@@ -18,5 +18,5 @@ regressions in your Python scripts or jupyter notebooks or use the **WebApp** wi
 
 For more, have a look at the [**sphinx-documentation**](https://zolabar.github.io/trendPy/)!
 
-<img src="figures/screenshot2.PNG"  />
+<img src="figures/screenshot3.PNG"  />
 

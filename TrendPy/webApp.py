@@ -160,7 +160,7 @@ class App():
         self.fig_widget.layout.height=400
         self.fig_widget.add_scatter(mode='markers', name='datapoints')
         self.fig_widget.add_scatter(mode='lines', name='trendline', line=dict(shape='spline'))
-        self.fig_widget.update_layout(title_text="Time Series Regression", template='ggplot2')        
+        self.fig_widget.update_layout(title_text="Time Series Regression", template='plotly')        
         
         return
     

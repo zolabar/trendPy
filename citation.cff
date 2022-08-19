@@ -7,7 +7,8 @@ authors:
   - family-names: Wirth
     given-names: Marcus
 title: trendPy -  Time Series Regression with Python
-version: v1.0.0
-journal: GitHub
+version: v1.0.1
+journal: Zenodo
+doi: 10.5281/zenodo.7009281
 date-released: 2022-07-15
 url: https://github.com/zolabar/trendPy

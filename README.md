@@ -1,6 +1,6 @@
 <img src="figures/logo.jpg"  height="300"  />
 
-Jupyter Lab:   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD) Documentation: [![doc](https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg)](https://zolabar.github.io/trendPy/) WebApps: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD?urlpath=voila%2Frender%2F/trendpy_webapp.ipynb) (binder) [![example badge](figures/succeeded.svg)](https://trendpy.herokuapp.com/) (Heroku)
+Jupyter Lab:   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD) Documentation: [![doc](https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg)](https://zolabar.github.io/trendPy/) WebApps: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zolabar/trendPy/HEAD?urlpath=voila%2Frender%2F/trendpy_webapp.ipynb) (binder) [![example badge](figures/succeeded.svg)](https://trendpy.herokuapp.com/) (Heroku) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7009281.svg)](https://doi.org/10.5281/zenodo.7009281)
 
 
 

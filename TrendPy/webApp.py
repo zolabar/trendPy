@@ -190,19 +190,19 @@ class App():
         else:
             try:
                 
-                
-                self.button.button_style='success'
             
                 #transforming the uploaded .csv file back to the type .csv in order to then create a pandas dataframe
-                time_series_file = list(self.uploaded_excel_file.value.values())[0]
-                content=time_series_file['content']
-                content=io.StringIO(content.decode('utf-8'))
-                time_series_data = pd.read_csv(content)
+
+                time_series_file = self.uploaded_excel_file.value[0].content
+
+                time_series_data = pd.read_csv(io.BytesIO(time_series_file))
             
                 #filling the drop down menus with the columns of the dataframe as options
                 self.input_dropdown.options = time_series_data.select_dtypes(include='number').columns
                 self.output_dropdown.options = time_series_data.select_dtypes(include='number').columns
                 b.value = time_series_data
+
+                self.button.button_style='success'
                 
                 with self.out: 
                     print("Data entered. Please select the X and Y values now. (Only works if header is in the first row of your file.)")

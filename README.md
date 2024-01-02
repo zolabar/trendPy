@@ -12,7 +12,7 @@ Use the package **TrendPy** as shown in the ```example.ipynb``` to use
 * polynomial $f(x)=a_n\cdot x^n+a_{n-1}\cdot x^{n-1}+...+a_0$
 * exponential $f(x)=a\cdot e^{b\cdot x}$
 * trigonometric $f(x)=a\cdot \cos(2\cdot \pi\cdot b\cdot x+c)$
-* "free" (with three parameters) (e.g.```a*arctan(b*x+c)```, ```a*exp(b*x+c)```, ```a*(x*b)+c```)
+* "free" (for max. three parameters) (e.g.```a*arctan(b*x+c)```, ```a*exp(b*x+c)```, ```a*(x*b)+c```), the intial guess for a, b, c is 1.
 
 regressions in your Python scripts or jupyter notebooks or use the **WebApp** with the correspondig button above.
 

@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.optimize import least_squares, minimize, curve_fit
+from scipy.optimize import curve_fit
 import sympy as sym
 from sympy import atan as arctan
 from sympy import sqrt, sin, cos, tan, exp, log, ln

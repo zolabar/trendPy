@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import io
 from IPython.display import display, clear_output
 from traitlets import traitlets
-import TrendPy.methods as tm
+import trendpy2.methods as tm
 import numpy as np
 import warnings
 import sympy as sym

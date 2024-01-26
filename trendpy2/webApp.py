@@ -10,7 +10,8 @@ import plotly.graph_objects as go
 import io
 from IPython.display import display, clear_output
 from traitlets import traitlets
-import TrendPy.methods as tm
+import trendpy2.methods as tm
+from trendpy2 import __version__
 import numpy as np
 import warnings
 import sympy as sym
@@ -20,7 +21,7 @@ a, b, c, x = sym.symbols('a, b, c, x', real=True)
 
 warnings.filterwarnings('ignore')
 
-version = 'v1.0.1'
+version = 'v' + __version__
 
 class LoadedButton(widgets.Button):
 
@@ -36,7 +37,7 @@ class App():
         self.box_layout = widgets.Layout(display='flex',
                         justify_content='center')
         header = widgets.HTML(
-            value=f'<h1 align="center">TrendPy Webapp<h1>\
+            value=f'<h1 align="center">TrendPy WebApp<h1>\
             <h3 align="center">Visualization of trends in (time series) data {version}<h3>')
         
         logo = widgets.HTML(

@@ -6,7 +6,7 @@ from trendpy2 import __version__
 import numpy as np
 import sympy as sym
 from sympy import atan as arctan
-from sympy import sqrt, sin, cos, tan, exp, log, ln
+from sympy import sqrt, sin, cos, tan, exp, log, ln, pi
 a, b, c, x = sym.symbols('a, b, c, x', real=True)
 
 
@@ -72,32 +72,32 @@ def main():
             r2 = round(fit.r2, 2)
             x = np.linspace(x[0], x[-1], 500)
             fig.update_layout(title_text=f"coefs: {fit.coef}")
-            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}'))
+            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}', marker=dict(color='red')))
         if trend == 'polynomial':
             fit = tpm.Trend(x, y, 'polReg', degree)
             r2 = round(fit.r2, 2)
             x = np.linspace(x[0], x[-1], 500)
             fig.update_layout(title_text=f"coefs: {fit.coef}")
-            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}'))      
+            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}', marker=dict(color='red'))) 
         if trend == 'trigonometric':
             fit = tpm.Trend(x, y, 'trigReg')
             r2 = round(fit.r2, 2)
             x = np.linspace(x[0], x[-1], 500)
             fig.update_layout(title_text=f"coefs: {fit.coef}")
-            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}'))           
+            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}', marker=dict(color='red')))          
         if trend == 'exponential':
             fit = tpm.Trend(x, y, 'expReg')
             r2 = round(fit.r2, 2)
             x = np.linspace(x[0], x[-1], 500)
             fig.update_layout(title_text=f"coefs: {fit.coef}")
-            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}'))          
+            fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}', marker=dict(color='red')))       
         if trend == 'manual':          
             try:
                  fit = tpm.Trend(x, y, ansatz='freeReg', freeRegAnsatz=ansatz)
                  r2 = round(fit.r2, 2)
                  x = np.linspace(x[0], x[-1], 500)
                  fig.update_layout(title_text=f"coefs: {fit.coef}")
-                 fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}'))                 
+                 fig.add_trace(go.Scatter(x=x, y=fit.pred(x), mode='lines', name=f'Fit, r2={r2}', marker=dict(color='red')))              
             except:
                 print('Enter function expression, like: a*x+b or a*arctan(b*x+c))')
         

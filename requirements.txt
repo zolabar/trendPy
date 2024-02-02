@@ -6,3 +6,4 @@ matplotlib
 pandas
 plotly
 sympy
+trendpy2

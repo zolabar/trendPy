@@ -20,6 +20,11 @@ or use the one of the **WebApps** with the correspondig button above (voila app 
 
 For more, have a look at the [**sphinx-documentation**](https://zolabar.github.io/trendPy/)!
 
+### Voila App
 
 <img src="figures/screenshot3.PNG"  />
+
+### Streamlit App
+
+<img src="figures/streamlit_app.png"  />
 

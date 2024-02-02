@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import methods as mt
-import numpy as np
+
 
 class Trend:
     """ Trends Class
@@ -24,6 +24,7 @@ class Trend:
         self.deg = deg
         self.freeRegAnsatz = freeRegAnsatz
         self.coef = self.coef()
+        self.coefs = self.coef
         self.r2 = self.r2()
         
     
@@ -62,7 +63,15 @@ class Trend:
         values = mt.pred(self.ansatz, self.coef, x, freeRegAnsatz=self.freeRegAnsatz)            
         
     
-        return  values      
+        return  values 
+    
+
+    def predict(self, x):
+        '''Computes the predction for input x and the computed corresponding
+           coefficients
+        ''' 
+    
+        return self.pred(x)     
     
     def r2(self):
         '''Computes the coefficient of determination for the training input

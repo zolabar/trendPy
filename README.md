@@ -16,6 +16,8 @@ and use it as **trendpy2** as shown in the ```example.ipynb``` and approximate y
 
 in your Python scripts or jupyter notebooks and use the best of the numerical and symbolic worlds to make predictions and assess the quality of your fit!
 
+**trendpy2** is deterministic, i.e. complementary to [trendpy](https://github.com/RonsenbergVI/trendpy), which uses a stochastic approach.
+
 or use the one of the **WebApps** with the correspondig button above (voila app or streamlit app).
 
 For more, have a look at the [**sphinx-documentation**](https://zolabar.github.io/trendPy/)!

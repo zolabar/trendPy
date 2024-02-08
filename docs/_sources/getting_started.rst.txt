@@ -2,57 +2,36 @@ Getting Started
 +++++++++++++++++
 
 Hi there! Welcome to the beginning of your journey with trendPy. Before you start to learn how to use the
-TrendPy package you must install it on your desktop environment. Unfortunately **TrendPy is not
-avialable via pip yet**.
+TrendPy package you must install it on your desktop environment. 
 
-So you must **install the package manually on your desktop or use the web app.** Don't worry. We will lead you to
-through this process step by step:
 
-Manually installation on native python
+Install via pip
 ========================================
 
-Please follow the steps below if you have native python installed on your desktop:
-
-#. First     you must :download:`download the package <./trendPy-main.zip>`
-#. Extract the downloaded .zip file in a folder you can find again.
-#. Open the extracted trendpy-main folder. You should see a folder with the same name there.
-#. Open this folder as well.
-#. You should now see a folder called TrendPy
-#. Copy this folder by clicking on it and pressing ``ctrl + c`` on your keyboard then.
-#. Navigate to your python directory. Depending on your pythons version the path should look like this by default installation ``C:\Users\name\AppData\Local\Programs\Python\Python39``
-#. Open the ``Lib`` folder
-#. Search and open the ``site-packages`` folder then.
-#. Paste the copied TrendPy folder into the ``site-packages`` folder by pressing ``ctrl + v`` on your keyboard.
+TrendPy can be installed using the ``pip install trendpy2`` command.
 
 
-Manually installation on the Anaconda distribution
+Local usage without installation
 =========================================================
 
-Please follow the steps below if you use python via the Anaconda distribution:
+You can just download the trendpy2 package from  `github project page <https://github.com/zolabar/trendPy>`_ and copy paste it into
+your working directory.
 
-#. First you must :download:`download the package <./trendPy-main.zip>` 
-#. Extract the downloaded .zip file in a folder you can find again.
-#. Open the extracted trendpy-main folder. You should see a folder with the same name there.
-#. Open this folder as well.
-#. You should now see a folder called TrendPy
-#. Copy this folder by clicking on it and pressing ``ctrl + c`` on your keyboard then.
-#. Navigate to your Anaconda3 directory. The path should look like this by default installation ``C:\Users\name\anaconda3\``
-#. Open the ``Lib`` folder
-#. Search and open the ``site-packages`` folder then.
-#. Paste the copied TrendPy folder into the ``site-packages`` folder by pressing ``ctrl + v`` on your keyboard.
 
 Cool! You have installed the package on your desktop now.
-To verify this you can open or create a python script and import the package with ``import TrendPy``. If no error appears 
-the pack        age was installed successfully and you can go ahead by reading the documentation.
+To verify this you can open or create a python script and import the package with ``import trendpy2``. If no error appears 
+the package was installed successfully and you can go ahead by reading the documentation or just running the example.ipynb, found on
+`github project page <https://github.com/zolabar/trendPy>`_ .
+The module section contains some simple doc string examples, too. However, it is recommended to have look at the example.ipynb in order
+to get started smoothly ;) 
 
-Web App
-=======
+Web Apps
+========
 
 If you just want to try out the trendPy package, you can also do that in your browser. That way you wont have to install anything.
 
-#. Visit either the `heroku app <https://trendpy.herokuapp.com/>`_ or the `binder web app <https://trendpy.herokuapp.com/>`_.
-#. Once you are there, click the upload button and select your data set.
-#. Click on "start calculation" to upload your chosen data set.
+#. Use the streamlit app, button on  `github project page <https://github.com/zolabar/trendPy>`_ 
+#. Or use the voila app, button on  `github project page <https://github.com/zolabar/trendPy>`_  
 #. Now you can play around with the x and y variables and pick your trend line.
 #. Once you are finished, you can save the created plot as a png via the small photo button to the right of the plot.
 #. Congratulations, now you have a nice trend line of your choosing for your data. It's really that simple.

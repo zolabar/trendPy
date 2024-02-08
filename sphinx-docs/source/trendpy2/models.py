@@ -4,18 +4,7 @@ from . import methods as mt
 
 
 class Trend:
-    """ 
-    Trends Class. Initialization of Trend with training input, training output,
-    ansatz (string) and deg (if polynomial ansatz). The following ansatz
-    are supported 'linReg', 'polReg', 'expReg', 'trigReg', 'freeReg'.
-    
-    Examples
-    ========
-
-    >>> from trendpy2 import models as tpm
-    >>> x = np.array([1, 2, 3])
-    >>> y = np.array([1, 1.5, 3.5])
-    >>> lin = tpm.Trend(x, y, 'linReg')
+    """ Trends Class
     
     """    
     
@@ -26,7 +15,9 @@ class Trend:
                        deg = None,
                        freeRegAnsatz=None,
                        ):
-
+        '''Initialization of Trend with training input, training output,
+           ansatz (string) and deg (if polynomial ansatz)
+        '''
         self.x = x
         self.y = y
         self.ansatz = ansatz
@@ -38,16 +29,7 @@ class Trend:
         
     
     def coef(self):
-        '''
-        Computes coefficients of corresponding ansatz-
-        
-        Examples
-        ========
-    
-   
-        >>> lin.coef
-        >>> [1.25, -0.5]
-        
+        '''Computes coefficients of corresponding ansatz
         '''
     
         if self.ansatz == 'linReg':
@@ -74,15 +56,8 @@ class Trend:
     
     
     def pred(self, x):
-        '''
-        Computes the predction for input x and the computed corresponding
-        coefficients.
-        
-        Examples
-        ========
-      
-        >>> lin.pred(3)
-        >>> 3.25        
+        '''Computes the predction for input x and the computed corresponding
+           coefficients
         ''' 
         
         values = mt.pred(self.ansatz, self.coef, x, freeRegAnsatz=self.freeRegAnsatz)            
@@ -92,21 +67,14 @@ class Trend:
     
 
     def predict(self, x):
-        '''
-        The same as pred.
+        '''Computes the predction for input x and the computed corresponding
+           coefficients
         ''' 
     
         return self.pred(x)     
     
     def r2(self):
-        '''
-        Computes the coefficient of determination for the training input.
-        
-        Examples
-        ========
-     
-        >>> lin.r2
-        >>> 0.893          
+        '''Computes the coefficient of determination for the training input
         ''' 
         wert=mt.r2(self.y, self.pred(self.x))
         return round(wert, 3)    

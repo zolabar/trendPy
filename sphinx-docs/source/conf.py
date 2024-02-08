@@ -22,8 +22,8 @@ sys.path.insert(0, os.path.abspath('../../figures'))
 # -- Project information -----------------------------------------------------
 
 project = 'trendPy-main'
-copyright = '2022, Christopher Wolf, Jan Wolter'
-author = 'Christopher Wolf, Jan Wolter'
+copyright = '2024, Christopher Wolf, Jan Wolter, Zoufiné Lauer-Baré'
+author = 'Christopher Wolf, Jan Wolter, Zoufiné Lauer-Baré'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
@@ -55,7 +55,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'classic'
 html_logo = 'logo.jpg'
 
 # Add any paths that contain custom static files (such as style sheets) here,

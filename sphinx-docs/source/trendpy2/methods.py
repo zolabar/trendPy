@@ -6,19 +6,8 @@ from sympy import sqrt, sin, cos, tan, exp, log, ln
 a, b, c, x = sym.symbols('a, b, c, x', real=True)
 
 def linReg(x_in,y):
-    '''
-    Time series linear regression. Returns coefs in polynomial descending order.
-    Coefs computed analytically.
-    
-    Examples
-    ========    
-    
-    >>> from trendpy2 import methods as tm
-    >>> import numpy as np    
-    >>> x = np.array([1, 2, 3])
-    >>> y = np.array([1, 1.5, 3.5])
-    >>> tm.linReg(x, y)    
-    >>> [1.25, -0.5]
+    '''Time series linear regression. Returns coefs in polynomial descending order.
+       Coefs computed analytically.
     '''
     
     a = (np.inner(x_in,y) - (len(x_in) * np.mean(x_in) * np.mean(y))) / (np.inner(x_in,x_in) - (len(x_in) * ((np.mean(x_in))**2)))
@@ -26,39 +15,17 @@ def linReg(x_in,y):
     return [a,b]
 
 def polReg(x_in,y, deg):
-    '''
-    Time series polynomial regression. Returns coefs in polynomial descending order.
-    Coefs computed numerically.
-    
-    Examples
-    ========    
-    
-    >>> from trendpy2 import methods as tm
-    >>> import numpy as np    
-    >>> x = np.array([0, 1, 2])
-    >>> y = np.array([0, 2, 4])
-    >>> tm.polReg(x, y, 2)  
-    >>> array([ 8.96585976e-17,  2.00000000e+00, -9.55246329e-17])
+    '''Time series polynomial regression. Returns coefs in polynomial descending order.
+       Coefs computed numerically.
     '''
     
     coefs = np.polyfit(x_in, y, deg)
     return coefs
 
 def freeReg(x_in, y_out, ansatz):
-    '''
-    Regression with user ansatz. The ansatz is expected to depend on three
-    parameters, a, b, and c. The ansatz is expected to be a string with a 
-    symbolic formulation. for instance: 'a*arctan(b*x_in+c)'.
-    
-    Examples
-    ========    
-    
-    >>> from trendpy2 import methods as tm
-    >>> import numpy as np    
-    >>> x = np.array([0, 1, 2, 3])
-    >>> y = 2*(1-3*np.exp(-x))
-    >>> tm.freeReg(x, y, ansatz='a*(1-b*exp(-c*x))')
-    >>> array([2., 3., 1.])     
+    '''Regression with user ansatz. The ansatz is expected to depend on three
+       parameters, a, b, and c. The ansatz is expected to be a string with a 
+       symbolic formulation. for instance: 'a*arctan(b*x_in+c)'.
     '''    
     test_func = sym.lambdify((x, a, b, c), eval(ansatz))
     
@@ -68,8 +35,7 @@ def freeReg(x_in, y_out, ansatz):
 
 
 def trigReg(x_in, y):
-    '''
-    Time series sine regression. Returns amplitude, frequency and phase.
+    '''Time seriessine regression. Returns amplitude, frequency and phase
     '''    
     timestep = x_in[1]-x_in[0]
     x_in = np.fft.fftfreq(len(x_in), timestep)
@@ -86,20 +52,7 @@ def trigReg(x_in, y):
     return coefs
 
 def expReg(x_in,y):
-    '''
-    Time series exponential regression. 
-    
-    Examples
-    ========    
-    
-    >>> from trendpy2 import methods as tm
-    >>> import numpy as np    
-    >>> x = np.array([0, 1, 2])
-    >>> y = 2*np.exp(x)
-    >>> tm.expReg(x, y)
-    >>> array([2., 1.])     
-    
-    
+    '''Time series exponential regression. 
     '''
     coef_first_step = linReg(x_in,np.log(y))
     b = coef_first_step[0]
@@ -107,9 +60,8 @@ def expReg(x_in,y):
     return [a,b]
 
 def pred(ansatz, coef, x_in, freeRegAnsatz=None):
-    '''
-    Computes the predction for input x_in and the computed corresponding
-    coefficients.
+    '''Computes the predction for input x_in and the computed corresponding
+       coefficients
     ''' 
         
     if ansatz == 'linReg' or ansatz == 'polReg':

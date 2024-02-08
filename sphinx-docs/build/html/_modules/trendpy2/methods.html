@@ -116,6 +116,18 @@
 <div class="viewcode-block" id="trigReg"><a class="viewcode-back" href="../../trendPyPackage.html#trendpy2.methods.trigReg">[docs]</a><span class="k">def</span> <span class="nf">trigReg</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Time series sine regression. Returns amplitude, frequency and phase.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    ========    </span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; from trendpy2 import methods as tm</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np    </span>
+<span class="sd">    &gt;&gt;&gt; x = np.linspace(0, 2, 50)</span>
+<span class="sd">    &gt;&gt;&gt; y = 2*np.cos(x*2*np.pi*3+2)</span>
+<span class="sd">    &gt;&gt;&gt; tm.trigReg(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; array([1.93690845, 2.94      , 2.38548967])</span>
+<span class="sd">    </span>
+<span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>    
     <span class="n">timestep</span> <span class="o">=</span> <span class="n">x_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x_in</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_in</span><span class="p">),</span> <span class="n">timestep</span><span class="p">)</span>
@@ -178,7 +190,8 @@
     <span class="k">return</span>  <span class="n">values</span> </div>
 
 <div class="viewcode-block" id="r2"><a class="viewcode-back" href="../../trendPyPackage.html#trendpy2.methods.r2">[docs]</a><span class="k">def</span> <span class="nf">r2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;Coefficient of determination</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Coefficient of determination.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">wert</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span><span class="o">-</span><span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">wert</span></div>

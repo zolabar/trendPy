@@ -70,6 +70,18 @@ def freeReg(x_in, y_out, ansatz):
 def trigReg(x_in, y):
     '''
     Time series sine regression. Returns amplitude, frequency and phase.
+    
+    Examples
+    ========    
+    
+    >>> from trendpy2 import methods as tm
+    >>> import numpy as np    
+    >>> x = np.linspace(0, 2, 50)
+    >>> y = 2*np.cos(x*2*np.pi*3+2)
+    >>> tm.trigReg(x, y)
+    >>> array([1.93690845, 2.94      , 2.38548967])
+    
+    
     '''    
     timestep = x_in[1]-x_in[0]
     x_in = np.fft.fftfreq(len(x_in), timestep)
@@ -132,7 +144,8 @@ def pred(ansatz, coef, x_in, freeRegAnsatz=None):
     return  values 
 
 def r2(y, y_pred):
-        '''Coefficient of determination
+        '''
+        Coefficient of determination.
         '''
         wert = 1-np.sum((y-y_pred)**2)/np.sum((y-np.mean(y))**2)
         return wert

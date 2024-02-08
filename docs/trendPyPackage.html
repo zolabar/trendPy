@@ -179,13 +179,21 @@ coefficients.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="trendpy2.methods.r2">
 <span class="sig-prename descclassname"><span class="pre">trendpy2.methods.</span></span><span class="sig-name descname"><span class="pre">r2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trendpy2/methods.html#r2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trendpy2.methods.r2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Coefficient of determination</p>
+<dd><p>Coefficient of determination.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="trendpy2.methods.trigReg">
 <span class="sig-prename descclassname"><span class="pre">trendpy2.methods.</span></span><span class="sig-name descname"><span class="pre">trigReg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trendpy2/methods.html#trigReg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trendpy2.methods.trigReg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time series sine regression. Returns amplitude, frequency and phase.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">trendpy2</span> <span class="kn">import</span> <span class="n">methods</span> <span class="k">as</span> <span class="n">tm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tm</span><span class="o">.</span><span class="n">trigReg</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">([</span><span class="mf">1.93690845</span><span class="p">,</span> <span class="mf">2.94</span>      <span class="p">,</span> <span class="mf">2.38548967</span><span class="p">])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

@@ -6,7 +6,7 @@
 
 ```pip install trendpy2``` 
 
-and use it as **trendpy2** as shown in the ```example.ipynb``` and approximate your time series with the following trends
+and use it as **trendpy2** as shown in the ```example.ipynb``` and approximate your time series ($f:\mathbb{R}\to \mathbb{R}$) with the following trends
 
 * linear $f(x)=a\cdot x+b$
 * polynomial $f(x)=a_n\cdot x^n+a_{n-1}\cdot x^{n-1}+...+a_0$
@@ -18,7 +18,7 @@ in your Python scripts or jupyter notebooks and use the best of the numerical an
 
 **trendpy2** is deterministic, i.e. complementary to [trendpy](https://github.com/RonsenbergVI/trendpy), which uses a stochastic approach.
 
-or use the one of the **WebApps** with the correspondig button above (voila app or streamlit app).
+or use one of the **WebApps** with the correspondig button above (voila app or streamlit app).
 
 For more, have a look at the [**sphinx-documentation**](https://zolabar.github.io/trendPy/)!
 
